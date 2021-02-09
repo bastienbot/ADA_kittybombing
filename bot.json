@@ -1,0 +1,61 @@
+{
+  "id": "c1b01e86-8ad2-474c-8cd8-719e945425bf",
+  "name": "ADA_kittybombing",
+  "description": null,
+  "default_flow": "Default",
+  "flows": [
+    {
+      "name": "Default",
+      "description": "Simple barebones flow. Code your own chatbot from this template!",
+      "commands": []
+    }
+  ],
+  "files": [],
+  "functions": [],
+  "apps": [
+    {
+      "name": "picture_frame",
+      "description": "Add any custom frame to a picture!\n\nTo use this app, you only need a base image and a custom frame you want to overlay on top of the image.\nThe image and the frame, which must be publicly accessible, will be squared and resized to 1200px.\n\nThis app returns the URL to the framed image.\n\n\n## Usage\n```\nFn(\"picture_frame\", base_url=\"https://example.com/image.jpg\", frame_url=\"https://example.com/frame.png\")\n```\n",
+      "args": [
+        "base_url=\"\"",
+        "frame_url=\"\""
+      ],
+      "runtime": "nodejs12.x",
+      "handler": "index.handler",
+      "environment": {},
+      "app_id": "28382486-0e1a-44a0-ab95-540e11a0b6e1",
+      "version": "1.0.0"
+    },
+    {
+      "name": "picture_writer",
+      "description": "Add any custom frame to a picture!\n\nTo use this app, you only need a base image and a custom frame you want to overlay on top of the image.\nThe image and the frame, which must be publicly accessible, will be squared and resized to 1200px.\n\nThis app returns the URL to the framed image.\n\n## Params\n    - url: String - The image url\n    - x: Int - X position\n    - y: Int - Y position\n    - size: Int - Font size, 4, 8, 16, 32 or 64\n    - color: String - black or white\n    - text: String - Text to be displayed\n    - x_align: String - X alignment, left, center, right\n    - y_align: String - X alignment, top, middle, bottom\n\n## Usage\n```\n  Fn(\"picture_writer\", \n    url= \"https://animageurl\",\n    x= -50,\n    y= 0,\n    size= 64,\n    color= \"white\",\n    text= \"Lorem ipsum\",\n    x_align= \"right\",\n    y_align= \"bottom\"\n\n```\n",
+      "args": [
+        "color=\"black\"",
+        "size=32",
+        "text=\"lorem ipsum\"",
+        "url=\"\"",
+        "x=0",
+        "x_align=\"left\"",
+        "y=0",
+        "y_align=\"top\""
+      ],
+      "runtime": "nodejs12.x",
+      "handler": "index.handler",
+      "environment": {},
+      "app_id": "5158fb91-9a0f-446e-acce-4dd89c0fd00e",
+      "version": "1.0.0"
+    },
+    {
+      "name": "utils/uuid",
+      "description": "Generate random UUIDs (either v1 or v4 - defaults to v4)\n\n## Usage\n```\nFn(\"utils/uuid\", version=\"v1|v4\")\n```\n",
+      "args": [
+        "version=\"v1|v4\""
+      ],
+      "runtime": "nodejs12.x",
+      "handler": "index.handler",
+      "environment": {},
+      "app_id": "c8fc0a19-1dcf-4859-8fe3-ce49113567e3",
+      "version": "1.0.0"
+    }
+  ]
+}
