@@ -4,7 +4,7 @@
 // Un chatbot commence toujours par l'étape "start" ci-dessous
 start:
   // On va saluer l'utilisateur avec la commande `say`
-  say "Salut!"
+  say "Coucou!"
   say Typing(3000)
   say "Je suis KittybombBot, le bot qui anime tes photos! 🤙"
   // On peut poser une question à l'utilisateur et donner des choix de boutons
@@ -26,7 +26,6 @@ start:
     goto end
   }
   
-  
   remember frames = {
     "jack": "https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/e72f0d6d-4111-459f-8f2b-2b8edfbadee2/framejackpink.png",
     "garfield": "https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/f0b0aec5-f4e5-42bd-ae5e-2c2a7fbc3909/framegarfieldpink.png",
@@ -37,15 +36,15 @@ start:
 // À toi de jouer maintenant, il va falloir remplir les trous !
 // ############################################################
 // Exercice 0 : Efface la ligne ci-dessous pour commencer le workshop
-/*
+
 
   // Exercice 1 : Il manque le mot clé pour faire parler le chatbot
-  ???? "Heureux de faire ta connaissance!"
+  say "Heureux de faire ta connaissance!"
   goto cats
 
 cats:
   // Exercice 2 : Comment faire croire à l'utilisateur que le chatbot tape au clavier pendant 3 secondes?
-  say ????(????)
+  say Typing(3000)
   say "Je vais te présenter mes amis Kitties 😼😽😸"
   say "Choisis un kitty bomber 🐈💣"
   //Exercices 3 : Dans le Carousel ci-dessous, il manque les boutons
@@ -53,23 +52,23 @@ cats:
     "Jack",
     subtitle="Gentil mais idiot",
     image_url="https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/d4ebd9b2-3a7d-44d7-8265-ce829e6ae84b/131949720_896319334505553_1183290215955190569_n.png",
-    buttons=[????("Choisis Jack", payload="jack") as btn1]
+    buttons=[Button( "Choisis Jack", payload="jack") as btn1]
   )
   do card2 = Card(
     "Clea",
     subtitle="Sooo cute",
     image_url="https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/aed22e26-f5d0-47f7-a1c9-fe5b915e7313/clea.png",
-    buttons=[????("Je veux Clea", payload="clea") as btn2]
+    buttons=[Button("Je veux Clea", payload="clea") as btn2]
   )
   do card3 = Card(
     "Garfield",
     subtitle="On l'appelle Mr. Maladroit",
     image_url="https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/d9d66d6c-c4e2-4895-8cf5-99c210e4ba87/garfield.png",
-    buttons=[????("Garfield est le bon", payload="garfield") as btn3]
+    buttons=[Button("Garfield est le bon", payload="garfield") as btn3]
   )
   say Carousel(cards=[card1, card2, card3])
   // Exercice 4 : Il manque le mot clé qui indique au chatbot d'attendre que l'utilisateur clique sur un bouton
-  ????
+  hold
   say Typing(3000)
   // Exercice 5 : À votre avis, que veulent dire les doubles barres?
   if (event match btn1 || event match btn2 || event match btn3)
@@ -79,14 +78,14 @@ cats:
     goto cats
   }
   // Exercice 6 : Il faut que le chatbot se rende à l'étape "destinataire"
-  ???? destinataire
+  goto destinataire
   
 destinataire:
   say "Quel est le prénom de ton amoureux.se?"
   hold
   // Exercice 7 : Indique au chatbot qui doit se souvenir de ce que l'utilisateur a ecrit
   // en créant une variable `name`
-  ???? ???? = event
+  remember name = event
   say Typing(3000)
   goto pic
 
@@ -95,12 +94,12 @@ pic:
   say Typing(3000)
   say "Maintenant envoie moi une photo de vous deux ensemble 😻"
   // Exercice 8 : Il manque un mot clé pour indiquer au chatbot d'afficher l'image
-  say ????("https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/a6e5bfcf-f8c8-413c-8e7b-57a381faded5/uploadimage.gif")
+  say Image("https://cdn.csml.dev/customers/4140eea8-4825-4df6-981d-c1ee239884bc/files/a6e5bfcf-f8c8-413c-8e7b-57a381faded5/uploadimage.gif")
   hold
   say "Super cette photo! Donne moi juste quelques secondes pour créer ta carte de Saint Valentin 💖"
   say Typing(5000)
   // Exercice 9 : Que mettre dans la variable pic
-  remember pic = ????
+  remember pic = event
   goto results
 
 results:
